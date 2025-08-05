@@ -11,8 +11,17 @@ Promise.all([
     initOdometerCounter();
     initSidebar();
     initSidebarDropdown();
-    initSubmitContact();
-    initSubmitNewsletter();
+    
+    // Only call these functions if they exist (from submit-form.js)
+    if (typeof initSubmitContact === 'function') {
+        initSubmitContact();
+    }
+    if (typeof initSubmitNewsletter === 'function') {
+        initSubmitNewsletter();
+    }
+    if (typeof initSubmitGameList === 'function') {
+        initSubmitGameList();
+    }
   });
 
 function initCounter() {

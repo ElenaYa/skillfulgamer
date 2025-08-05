@@ -38,12 +38,12 @@
                                     <i class="fa-solid fa-check"></i>
                                 </div>
                                 <div class="d-flex flex-column gspace-3">
-                                    <h3>Дякуємо за підписку/заявку!</h3>
-                                    <p>Перевірте пошту — ми вже надіслали вам потрібну інформацію.</p>
+                                    <h3 id="thankYouTitle">Дякуємо за підписку/заявку!</h3>
+                                    <p id="thankYouMessage">Перевірте пошту — ми вже надіслали вам потрібну інформацію.</p>
                                     
                                     <div class="card" style="padding: 2rem; background: var(--accent-color-4); border-radius: 12px;">
-                                        <h4>Що ви отримаєте:</h4>
-                                        <ul class="chevron-list" style="text-align: left; margin-top: 1rem;">
+                                        <h4 id="benefitsTitle">Що ви отримаєте:</h4>
+                                        <ul class="chevron-list" id="benefitsList" style="text-align: left; margin-top: 1rem;">
                                             <li>Персональний гайд по вибору ігрової платформи</li>
                                             <li>Підбірку топ-ігор для вашої платформи</li>
                                             <li>Актуальні ціни та знижки в українських магазинах</li>
@@ -80,5 +80,61 @@
     <script src="js/vendor/isotope.pkgd.min.js"></script>
     <script src="js/vendor/fslightbox.js"></script>
     <script src="js/video_embedded.js"></script>
+    
+    <script>
+    $(document).ready(function() {
+        // Check if user came from game list form
+        var gameListData = localStorage.getItem('gameListFormData');
+        var contactData = localStorage.getItem('contactFormData');
+        
+        if (gameListData) {
+            try {
+                var data = JSON.parse(gameListData);
+                
+                // Customize content for game list request
+                $('#thankYouTitle').text('Дякуємо за заявку, ' + data.name + '!');
+                $('#thankYouMessage').text('Ми надішлемо персональну підбірку ігор на ' + data.email + ' протягом 24 годин.');
+                $('#benefitsTitle').text('Що ви отримаєте у підбірці:');
+                
+                var benefits = [
+                    'Топ-5 найкращих ігор для вашого рівня досвіду',
+                    'Актуальні ціни в українських магазинах',
+                    'Рекомендації по жанрах та стилях гри'
+                ];
+                
+                if (data.platform) {
+                    var platformNames = {
+                        'ps5': 'PlayStation 5',
+                        'xbox': 'Xbox Series X/S',
+                        'nintendo': 'Nintendo Switch',
+                        'pc': 'ПК',
+                        'mobile': 'мобільних пристроїв'
+                    };
+                    benefits.unshift('Ексклюзивні ігри для ' + platformNames[data.platform]);
+                }
+                
+                $('#benefitsList').html(benefits.map(function(benefit) {
+                    return '<li>' + benefit + '</li>';
+                }).join(''));
+                
+                // Clear the saved data
+                localStorage.removeItem('gameListFormData');
+            } catch (e) {
+                console.log('Error parsing game list data:', e);
+            }
+        } else if (contactData) {
+            try {
+                var data = JSON.parse(contactData);
+                $('#thankYouTitle').text('Дякуємо за повідомлення, ' + data.name + '!');
+                $('#thankYouMessage').text('Ми відповімо на ' + data.email + ' протягом 24 годин.');
+                
+                // Clear the saved data
+                localStorage.removeItem('contactFormData');
+            } catch (e) {
+                console.log('Error parsing contact data:', e);
+            }
+        }
+    });
+    </script>
 </body>
 </html>

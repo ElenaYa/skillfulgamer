@@ -6,17 +6,6 @@
     <title>404 - Сторінка не знайдена - SkilfulGamer</title>
     <meta name="description" content="Сторінка не знайдена. Поверніться на головну сторінку SkilfulGamer для вибору ігрової платформи.">
     
-    <!-- Vendor CSS -->
-    <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="css/vendor/swiper-bundle.min.css">
-    <link rel="stylesheet" href="css/vendor/animate.min.css">
-    <link rel="stylesheet" href="css/vendor/font-family-inter.css">
-    <link rel="stylesheet" href="css/vendor/font-family-instrument-sans.css">
-    <link rel="stylesheet" href="css/vendor/fontawesome.css">
-    <link rel="stylesheet" href="css/vendor/solid.css">
-    <link rel="stylesheet" href="css/vendor/regular.css">
-    <link rel="stylesheet" href="css/vendor/brand.css">
-
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
     
@@ -110,33 +99,11 @@
     <script src="js/vendor/jquery.min.js"></script>
     <script src="js/vendor/bootstrap.bundle.min.js"></script>
     <script src="js/vendor/swiper-bundle.min.js"></script>
+    <script src="js/submit-form.js"></script>
     <script src="js/script.js"></script>
     <script src="js/swiper-script.js"></script>
     <script src="js/vendor/isotope.pkgd.min.js"></script>
     <script src="js/vendor/fslightbox.js"></script>
     <script src="js/video_embedded.js"></script>
-    
-    <script>
-        // Load header
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header').innerHTML = data;
-            });
-
-        // Load sidebar
-        fetch('sidebar.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('sidebar').innerHTML = data;
-            });
-
-        // Load footer
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer').innerHTML = data;
-            });
-    </script>
 </body>
 </html>
