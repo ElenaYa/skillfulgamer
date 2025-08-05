@@ -169,6 +169,8 @@
                                         <textarea rows="4" name="message" id="message" placeholder="Розкажіть детальніше про ваше питання..." required=""></textarea>
                                         <p class="error-text hidden">Повідомлення обов'язкове</p>
                                     </div>
+                                    <!-- Hidden GCLID field for Google Ads tracking -->
+                                    <input type="hidden" id="contactGclid" name="gclid" value="">
                                     <div>
                                         <button type="submit" class="btn btn-accent">Надіслати повідомлення</button>
                                     </div>
@@ -756,6 +758,46 @@
         
         // Handle window resize
         window.addEventListener('resize', handleResponsiveTabs);
+    </script>
+    
+    <!-- GCLID Handler Script -->
+    <script>
+        // Function to get URL parameter
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+        
+        // Function to set GCLID in forms
+        function setGclidInForms() {
+            var gclid = getUrlParameter('gclid');
+            if (gclid) {
+                // Store GCLID in localStorage for future page visits
+                localStorage.setItem('gclid', gclid);
+                
+                // Set GCLID in all forms with gclid field
+                var gclidFields = document.querySelectorAll('input[name="gclid"]');
+                gclidFields.forEach(function(field) {
+                    field.value = gclid;
+                });
+            } else {
+                // Check if we have stored GCLID from previous visit
+                var storedGclid = localStorage.getItem('gclid');
+                if (storedGclid) {
+                    var gclidFields = document.querySelectorAll('input[name="gclid"]');
+                    gclidFields.forEach(function(field) {
+                        field.value = storedGclid;
+                    });
+                }
+            }
+        }
+        
+        // Run when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setGclidInForms();
+        });
     </script>
 </body>
 </html>

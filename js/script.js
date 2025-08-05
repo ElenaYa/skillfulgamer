@@ -12,7 +12,6 @@ Promise.all([
     initSidebar();
     initSidebarDropdown();
     
-    // Only call these functions if they exist (from submit-form.js)
     if (typeof initSubmitContact === 'function') {
         initSubmitContact();
     }
@@ -113,23 +112,19 @@ function initOdometerCounter() {
                 suffix = '';
             }
 
-            // Tambahkan angka di depan titik jika perlu
             if (displayValue.toString().startsWith('.')) {
                 displayValue = '0' + displayValue;
             }
 
             $el.text(displayValue);
 
-            // Cari elemen .odometer-suffix di dalam parent terdekat dan set suffix
             $el.closest('.counter-box').find('.odometer-suffix').text(suffix);
         });
     }
 
-    // Cek apakah ada elemen .odometer di halaman
     const $odometers = $('.odometer');
     if ($odometers.length === 0) return;
 
-    // Gunakan IntersectionObserver agar animasi dimulai saat elemen terlihat di layar
     const observer = new window.IntersectionObserver(function(entries, observer) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {
@@ -139,7 +134,6 @@ function initOdometerCounter() {
         });
     }, { threshold: 0.3 });
 
-    // Observe salah satu odometer saja, karena biasanya mereka muncul bersamaan
     observer.observe($odometers.get(0));
 }
 

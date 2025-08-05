@@ -429,6 +429,8 @@
                                 <option value="mobile">Мобільні ігри</option>
                             </select>
                         </div>
+                        <!-- Hidden GCLID field for Google Ads tracking -->
+                        <input type="hidden" id="gameListGclid" name="gclid" value="">
                         <div class="d-grid">
                             <button type="submit" class="btn btn-accent">Отримати підбірку ігор</button>
                         </div>
@@ -455,5 +457,50 @@
     <script src="js/vendor/isotope.pkgd.min.js"></script>
     <script src="js/vendor/fslightbox.js"></script>
     <script src="js/video_embedded.js"></script>
+    
+    <!-- GCLID Handler Script -->
+    <script>
+        // Function to get URL parameter
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+        
+        // Function to set GCLID in forms
+        function setGclidInForms() {
+            var gclid = getUrlParameter('gclid');
+            if (gclid) {
+                // Store GCLID in localStorage for future page visits
+                localStorage.setItem('gclid', gclid);
+                
+                // Set GCLID in all forms with gclid field
+                var gclidFields = document.querySelectorAll('input[name="gclid"]');
+                gclidFields.forEach(function(field) {
+                    field.value = gclid;
+                });
+            } else {
+                // Check if we have stored GCLID from previous visit
+                var storedGclid = localStorage.getItem('gclid');
+                if (storedGclid) {
+                    var gclidFields = document.querySelectorAll('input[name="gclid"]');
+                    gclidFields.forEach(function(field) {
+                        field.value = storedGclid;
+                    });
+                }
+            }
+        }
+        
+        // Run when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setGclidInForms();
+        });
+        
+        // Also run when modal opens to ensure GCLID is set
+        document.addEventListener('shown.bs.modal', function() {
+            setGclidInForms();
+        });
+    </script>
 </body>
 </html>

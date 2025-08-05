@@ -8,7 +8,6 @@ function initSubmitContact() {
     var $successMessage = $("#success-message");
     var $errorMessage = $("#error-message");
 
-    // Restore form data if returning from thank you page
     function restoreFormData() {
         var savedData = localStorage.getItem('contactFormData');
         if (savedData) {
@@ -20,7 +19,6 @@ function initSubmitContact() {
                 $subject.val(formData.subject || '');
                 $message.val(formData.message || '');
                 
-                // Clear saved data after restoring
                 localStorage.removeItem('contactFormData');
             } catch (e) {
                 console.log('Error restoring form data:', e);
@@ -28,10 +26,8 @@ function initSubmitContact() {
         }
     }
 
-    // Restore form data on page load
     restoreFormData();
 
-    // Helper to show error
     function showError($input, message) {
         $input.addClass("error-border");
         var $errorText = $input.siblings(".error-text");
@@ -42,7 +38,6 @@ function initSubmitContact() {
         $errorText.text(message).removeClass("hidden");
     }
 
-    // Helper to clear error
     function clearError($input) {
         $input.removeClass("error-border");
         var $errorText = $input.siblings(".error-text");
@@ -59,7 +54,6 @@ function initSubmitContact() {
 
         var isValid = true;
 
-        // Validate Name
         if ($.trim($name.val()) === "") {
             showError($name, "Ім'я обов'язкове");
             isValid = false;
@@ -67,7 +61,6 @@ function initSubmitContact() {
             clearError($name);
         }
 
-        // Validate Email
         if ($.trim($email.val()) === "") {
             showError($email, "Email обов'язковий");
             isValid = false;
@@ -78,7 +71,6 @@ function initSubmitContact() {
             clearError($email);
         }
 
-        // Validate Phone
         if ($.trim($phone.val()) === "") {
             showError($phone, "Телефон обов'язковий");
             isValid = false;
@@ -86,7 +78,6 @@ function initSubmitContact() {
             clearError($phone);
         }
 
-        // Validate Subject
         if ($.trim($subject.val()) === "") {
             showError($subject, "Тема обов'язкова");
             isValid = false;
@@ -94,7 +85,6 @@ function initSubmitContact() {
             clearError($subject);
         }
 
-        // Validate Message
         if ($.trim($message.val()) === "") {
             showError($message, "Повідомлення обов'язкове");
             isValid = false;
@@ -113,7 +103,6 @@ function initSubmitContact() {
             $errorMessage.addClass("hidden");
         }
 
-        // Store form data before redirect
         var formData = {
             name: $name.val(),
             email: $email.val(),
@@ -123,14 +112,11 @@ function initSubmitContact() {
         };
         localStorage.setItem('contactFormData', JSON.stringify(formData));
 
-        // Show success message briefly then redirect (keep form filled)
         $successMessage.removeClass("hidden");
 
-        // Remove error-border and hide error-text after successful submit
         $form.find(".error-border").removeClass("error-border");
         $form.find(".error-text").addClass("hidden");
 
-        // Redirect to thank you page after 1.5 seconds (without clearing form)
         setTimeout(function () {
             window.location.href = "thank-you.html";
         }, 1500);
@@ -188,7 +174,6 @@ function initSubmitGameList() {
     var $successMessage = $("#gameList-success-message");
     var $errorMessage = $("#gameList-error-message");
 
-    // Helper to show error
     function showError($input, message) {
         $input.addClass("error-border");
         var $errorText = $input.siblings(".error-text");
@@ -199,13 +184,11 @@ function initSubmitGameList() {
         $errorText.text(message).removeClass("hidden");
     }
 
-    // Helper to clear error
     function clearError($input) {
         $input.removeClass("error-border");
         $input.siblings(".error-text").addClass("hidden");
     }
 
-    // Clear all errors
     function clearAllErrors() {
         $form.find('.error-border').removeClass('error-border');
         $form.find('.error-text').addClass('hidden');
@@ -213,18 +196,15 @@ function initSubmitGameList() {
         $errorMessage.addClass("hidden");
     }
 
-    // Validate form
     function validateForm() {
         var isValid = true;
         clearAllErrors();
 
-        // Validate name
         if ($name.val().trim() === "") {
             showError($name, "Будь ласка, введіть ваше ім'я");
             isValid = false;
         }
 
-        // Validate email
         var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if ($email.val().trim() === "") {
             showError($email, "Будь ласка, введіть ваш email");
@@ -237,7 +217,6 @@ function initSubmitGameList() {
         return isValid;
     }
 
-    // Save form data to localStorage
     function saveFormData() {
         var formData = {
             name: $name.val(),
@@ -247,25 +226,20 @@ function initSubmitGameList() {
         localStorage.setItem('gameListFormData', JSON.stringify(formData));
     }
 
-    // Form submit handler
     $form.on("submit", function(e) {
         e.preventDefault();
         
         if (validateForm()) {
-            // Save form data before redirect
             saveFormData();
             
-            // Show success message
             $successMessage.removeClass("hidden");
             
-            // Redirect after 2 seconds
             setTimeout(function() {
                 window.location.href = "thank-you.html";
             }, 2000);
         }
     });
 
-    // Clear errors on input
     $name.on("input", function() {
         if ($(this).val().trim() !== "") {
             clearError($(this));
