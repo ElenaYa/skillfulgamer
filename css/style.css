@@ -1210,9 +1210,51 @@ ul{
 }
 
 .card-service.talent-management{
-    background-image: url('../image/successful-multiethnic-colleagues-in-stylish-casua-2024-11-07-21-55-39-utc.jpg');
+    background-image: url('../image/pc-gaming-2025.jpg');
     width: 100%;
     height: 100%;
+    position: relative;
+}
+
+.card-service.talent-management::before{
+    content: '';
+    position: absolute;
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.8) 100%);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.card-service.talent-management .card-service-content{
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+}
+
+.card-service.talent-management h3{
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.card-service.talent-management p{
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.card-service.talent-management .link-wrapper a{
+    color: var(--accent-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+.card-service.talent-management .link-wrapper i{
+    color: var(--accent-color);
 }
 
 .card-service.talent-management .spacer{
@@ -1220,63 +1262,205 @@ ul{
 }
 
 .card-service.brand-partnership{
-    background-image: url('../image/colleagues-greeting-at-a-presentation-in-the-offic-2024-09-21-18-01-05-utc.jpg');
+    background-image: url('../image/xbox-series-x-2025.jpg');
+    position: relative;
 }
 
 .card-service.brand-partnership::before{
     content: '';
     position: absolute;
-    background-color: var(--primary);
-    opacity: 0.5;
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.8) 100%);
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    z-index: -1;
+    z-index: 1;
+}
+
+.card-service.brand-partnership .card-service-content{
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+}
+
+.card-service.brand-partnership h3{
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.card-service.brand-partnership p{
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.card-service.brand-partnership .link-wrapper a{
+    color: var(--accent-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+.card-service.brand-partnership .link-wrapper i{
+    color: var(--accent-color);
 }
 
 .card-service.card-service.talent-management::before{
     content: '';
     position: absolute;
-    background-color: var(--primary);
-    opacity: 0.5;
+    background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.8) 100%);
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    z-index: -1;
+    z-index: 1;
 }
 
 .card-service.influencer-marketing{
-    background-image: url('../image/smiling-multicultural-businesspeople-taking-selfie-2024-11-10-19-49-19-utc.jpg');
+    background-image: url('../image/ps5-2025.jpg');
+    position: relative;
 }
 
 .card-service.influencer-marketing::before{
     content: '';
     position: absolute;
-    background-color: var(--primary);
-    opacity: 0.5;
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.8) 100%);
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    z-index: -1;
+    z-index: 1;
+}
+
+.card-service.influencer-marketing .card-service-content{
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+}
+
+.card-service.influencer-marketing h3{
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.card-service.influencer-marketing p{
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.card-service.influencer-marketing .link-wrapper a{
+    color: var(--accent-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+.card-service.influencer-marketing .link-wrapper i{
+    color: var(--accent-color);
 }
 
 .card-service.content-strategy{
-    background-image: url('../image/workers-using-a-graphic-to-explain-data-in-a-meeti-2024-12-09-03-11-20-utc.jpg');
+    background-image: url('../image/nintendo-switch-2025.jpg');
+    position: relative;
 }
 
 .card-service.content-strategy::before{
     content: '';
     position: absolute;
-    background-color: var(--primary);
-    opacity: 0.5;
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.8) 100%);
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    z-index: -1;
+    z-index: 1;
+}
+
+.card-service.content-strategy .card-service-content{
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+}
+
+.card-service.content-strategy h3{
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.card-service.content-strategy p{
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.card-service.content-strategy .link-wrapper a{
+    color: var(--accent-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+.card-service.content-strategy .link-wrapper i{
+    color: var(--accent-color);
+}
+
+/* Responsive styles for service cards */
+@media (max-width: 767px) {
+    .card-service.talent-management .card-service-content,
+    .card-service.influencer-marketing .card-service-content,
+    .card-service.brand-partnership .card-service-content,
+    .card-service.content-strategy .card-service-content {
+        padding-top: 0.5rem;
+    }
+    
+    .card-service.talent-management h3,
+    .card-service.influencer-marketing h3,
+    .card-service.brand-partnership h3,
+    .card-service.content-strategy h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.3rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .card-service.talent-management .card-service-content,
+    .card-service.influencer-marketing .card-service-content,
+    .card-service.brand-partnership .card-service-content,
+    .card-service.content-strategy .card-service-content {
+        padding-top: 0.8rem;
+    }
+    
+    .card-service.talent-management h3,
+    .card-service.influencer-marketing h3,
+    .card-service.brand-partnership h3,
+    .card-service.content-strategy h3 {
+        font-size: 1.4rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card-service.talent-management .card-service-content {
+        padding-top: 0.5rem;
+    }
+    
+    .card-service.influencer-marketing .card-service-content,
+    .card-service.brand-partnership .card-service-content,
+    .card-service.content-strategy .card-service-content {
+        padding-top: 1rem;
+    }
+    
+    .card-service.talent-management h3,
+    .card-service.influencer-marketing h3,
+    .card-service.brand-partnership h3,
+    .card-service.content-strategy h3 {
+        font-size: 1.5rem;
+    }
 }
 
 .service-cta{
@@ -1572,7 +1756,7 @@ ul{
 
 .contactus-cta{
     position: relative;
-    background-image: url('../image/joyful-team-celebrating-success-in-office-2024-12-04-21-58-05-utc.jpg');
+    background-image: url('../image/join-us-banner-gaming.jpg');
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
