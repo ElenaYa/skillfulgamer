@@ -1,53 +1,4 @@
-/* ========= Css Table of Contents ========== */
 
-/** 
- * ================================
- * CSS TABLE OF CONTENTS
- * ================================
- * 
- * 01. Import Vendor
- * 02. Root Variable
- * 03. Keyframes Animation
- * 04. Typography
- * 05. Reset & Base
- * 06. Container
- * 07. Grid System
- * 08. Header
- * 09. Navigation
- * 10. Hero Section
- * 11. Banner
- * 12. About Section
- * 13. Services Section
- * 14. Features Section
- * 15. Portfolio Section
- * 16. Gallery
- * 17. Team Section
- * 18. Testimonials
- * 19. Pricing Table
- * 20. FAQ Section
- * 21. Blog Section
- * 22. Single Blog
- * 23. Contact Section
- * 24. Newsletter
- * 25. Call To Action
- * 26. Footer
- * 27. Copyright
- * 28. Button Styles
- * 29. Form Styles
- * 30. Card Styles
- * 31. Modal & Popup
- * 32. Tabs
- * 33. Accordion
- * 34. Progress Bar
- * 35. Pagination
- * 36. Breadcrumb
- * 37. Sidebar
- * 38. Scroll To Top
- * 39. Preloader
- * 40. Mobile Responsive
- */
-
-/* 01. Import Vendor */
 @import url('../css/vendor/font-family-instrument-sans.css');
 @import url('../css/vendor/font-family-inter.css');
 @import url('../css/vendor/bootstrap.min.css');
@@ -60,7 +11,6 @@
 @import url('../css/vendor/animate.min.css');
 
 
-/* 02. Root Variable */
 :root{
     --primary: #141414;
     --secondary: #FFFFFF;
@@ -80,7 +30,6 @@
     --animation-fast: 0.75s;
 }
 
-/* 03. Keyframes Animation */
 @property --progress {
     syntax: '<integer>';
     inherits: true;
@@ -109,7 +58,6 @@
     }
 }
 
-/* 04. Base Elements */
 body{
     font-family: var(--font-2);
     color: var(--primary);
@@ -176,7 +124,7 @@ ul{
     list-style: none;
 }
 
-/* 05. Container Elements */
+
 
 .section {
     padding: 6em 1em 6em 1em;
@@ -208,7 +156,7 @@ ul{
 }
 
 
-/* 06. Navbar Components */
+
 
 .navbar-layout {
     position: relative;
@@ -350,7 +298,6 @@ ul{
 }
 
 
-/* 07. Sidebar Components */
 
 .sidebar-overlay{
     position: fixed;
@@ -493,7 +440,6 @@ ul{
     border-radius: 5px;
 }
 
-/* 08. Bredcrumb components */
 
 .breadcrumb{
     display: flex;
@@ -520,7 +466,6 @@ ul{
     color: var(--accent-color);
 }
 
-/* 10. Button Components */
 
 .btn{
     display: inline-block;
@@ -568,7 +513,6 @@ ul{
     background-color: var(--accent-color-4);
 }
 
-/* 11. Wrapper */
 
 .link-wrapper{
     display: flex;
@@ -611,7 +555,6 @@ ul{
     justify-content: end;  
 }
 
-/* 12. Heading Wrapper */
 
 .heading-wrapper{
     background-color: transparent;
@@ -620,7 +563,6 @@ ul{
     -webkit-text-fill-color: transparent;
 }
 
-/* 13. Custom Spacing */
 
 .gspace-0 { 
     gap: 0px 0px; 
@@ -733,7 +675,6 @@ ul{
     --bs-gutter-y: 50px;
 }
 
-/* 14. Banner Components */
 
 .banner-home{
     background-image: url('../image/banner-choose-platform.jpg');
@@ -871,7 +812,6 @@ ul{
     width: 55%;
 }
 
-/* 15. Swiper */
 
 .swiperPartner{
     display: flex;
@@ -886,7 +826,6 @@ ul{
     height: auto;
 }
 
-/* 16. Fonts */
 
 .font-1{
     font-family: var(--font-1);
@@ -896,7 +835,6 @@ ul{
     font-family: var(--font-2);
 }
 
-/* 17. Accent Color */
 
 .accent-color{
     color: var(--accent-color);
@@ -910,7 +848,7 @@ ul{
     color: var(--accent-color-3);
 }
 
-/* 18. Image */
+
 
 .image-container{
     position: relative;
@@ -925,7 +863,7 @@ ul{
     height: auto;
 }
 
-/* 19. Card */
+
 
 .card{
     border: none;
@@ -951,7 +889,6 @@ ul{
     align-items: center;
 }
 
-/* 20. About Components */
 
 .about-qoute{
     display: flex;
@@ -964,7 +901,6 @@ ul{
     font-weight: 600;
 }
 
-/* 21. Counter Component */
 
 .counter, .counter-detail{
     font-size: 64px;
@@ -1008,7 +944,6 @@ ul{
     gap: 15px 15px;
 }
 
-/* 22. Progress Bar Components */
 
 .progress-container {
     position: relative;
@@ -1064,7 +999,6 @@ ul{
     color: var(--accent-color-3);
 }
 
-/* 23. Video Components */
 
 .bg-video-container{
     background-image: url('../image/group-portrait-of-confident-interracial-entreprene-2024-11-13-22-56-07-utc.jpg');
@@ -1186,7 +1120,6 @@ ul{
     color: var(--accent-color-4);
 }
 
-/* 23. Service Components */
 .card-service{
     display: flex;
     flex-direction: column;
@@ -1410,7 +1343,6 @@ ul{
     color: var(--accent-color);
 }
 
-/* Responsive styles for service cards */
 @media (max-width: 767px) {
     .card-service.talent-management .card-service-content,
     .card-service.influencer-marketing .card-service-content,
@@ -1572,7 +1504,6 @@ ul{
     font-size: 16px;
 }
 
-/* 24. Social Media Components */
 
 .social-media-cta{
     display: flex;
@@ -1602,7 +1533,6 @@ ul{
     z-index: -1;
 }
 
-/* 25. Talent Components */
 
 .card-talent{
     display: flex;
@@ -1752,7 +1682,6 @@ ul{
     height: 230px;
 }
 
-/* 26. Contact Us Components */
 
 .contactus-cta{
     position: relative;
@@ -1788,7 +1717,6 @@ ul{
     background-image: url('../image/portrait-of-a-multi-ethnic-and-young-members-of-a-2024-12-09-02-52-13-utc.jpg');
 }
 
-/* 27. Pricing Components */
 
 .card-pricing{
     background-color: var(--accent-color-4);
@@ -1847,7 +1775,6 @@ ul{
     font-size: 14px;
 }
 
-/* 28. Testimonial Components */
 
 .card-testimonial{
     display: flex;
@@ -1951,7 +1878,6 @@ ul{
     color: var(--accent-color);
 }
 
-/* 29. Underline Components */
 
 .underline-1{
     border-bottom: solid 1px var(--accent-color);
@@ -1969,7 +1895,6 @@ ul{
     width: 100%;
 }
 
-/* 30. Icon Compoents */
 
 .social-container{
     display: flex;
@@ -2031,7 +1956,6 @@ ul{
     background-color: var(--accent-color-2);
 }
 
-/* 31. Animate Compoents */
 
 .animate-box {
     opacity: 0;
@@ -2049,7 +1973,6 @@ ul{
     animation-duration: var(--animation-slow);
 }
 
-/* 32.Faq Accordion Banner Components */
 
 .accordion .accordion-item {
     background-color: transparent;
@@ -2180,7 +2103,6 @@ ul{
     height: 50px;
 }
 
-/* 33. List Components */
 
 .check-list {
     list-style: none;
@@ -2283,7 +2205,6 @@ ul{
     font-size: 14px;
 }
 
-/* 34. Blog Post Components */
 
 .card-blog{
     display: flex;
@@ -2415,7 +2336,6 @@ ul{
     object-position: center;
 }
 
-/* 35. Footer Components */
 
 .bg-footer{
     background-color: var(--primary);
@@ -2468,7 +2388,6 @@ ul{
     color: var(--accent-color);
 }
 
-/* 36. Maps */
 
 .maps{
     border-radius: var(--global-border-radius);
@@ -2477,7 +2396,6 @@ ul{
     overflow: hidden;
 }
 
-/* 37. Form Components */
 
 .form{
     display: flex;
@@ -2609,7 +2527,6 @@ textarea.error-border{
     display: none;
 }
 
-/* 38. Newsletter */
 
 #newsletterForm {
     display: flex;
@@ -2656,10 +2573,8 @@ textarea.error-border{
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0);
 }
 
-/* 39. Tablet Responsive */
 
 @media screen and (min-width: 1024px){
-    /* Flex spacing (gap) */
     .gspace-md-0 { 
         gap: 0px 0px; 
     }
@@ -2679,7 +2594,6 @@ textarea.error-border{
         gap: 50px 50px; 
     }
 
-    /* Grid spacing (column-gap) */
 
     .gspace-x-md-0 { 
         column-gap: 0px;
@@ -2700,7 +2614,6 @@ textarea.error-border{
         column-gap: 50px; 
     }
 
-    /* Grid spacing (row-gap) */
 
     .gspace-y-md-0 { 
         row-gap: 0px; 
@@ -2721,7 +2634,6 @@ textarea.error-border{
         row-gap: 50px; 
     }
 
-    /* Grid spacing (row-gap & column-gap) */
 
     .grid-spacer-md-0 { 
         --bs-gutter-x: 0px; 
@@ -2748,7 +2660,6 @@ textarea.error-border{
         --bs-gutter-y: 50px; 
     }
 
-    /* Grid spacing (column-gap) */
 
     .grid-spacer-x-md-0 { 
         --bs-gutter-x: 0px; 
@@ -2886,11 +2797,9 @@ textarea.error-border{
     }
 }
 
-/* 40. Mobile Responsive */
 
 @media screen and (min-width: 767px){
 
-    /* Flex spacing (gap) */
 
     .gspace-sm-0 { 
         gap: 0px 0px; 
@@ -2911,7 +2820,6 @@ textarea.error-border{
         gap: 50px 50px; 
     }
 
-    /* Grid spacing (column-gap) */
 
     .gspace-x-sm-0 { 
         column-gap: 0px; 
@@ -2935,7 +2843,6 @@ textarea.error-border{
         column-gap: 50px; 
     }
 
-    /* Grid spacing (row-gap) */
 
     .gspace-y-sm-0 { 
         row-gap: 0px; 
@@ -2956,7 +2863,6 @@ textarea.error-border{
         row-gap: 50px; 
     }
 
-    /* Grid spacing (row-gap & column-gap) */
 
     .grid-spacer-sm-1 { 
         --bs-gutter-x: 10px; 
@@ -2979,7 +2885,6 @@ textarea.error-border{
         --bs-gutter-y: 50px; 
     }
 
-    /* Grid spacing (column-gap) */
 
     .grid-spacer-x-sm-0 { 
         --bs-gutter-x: 0px; 
@@ -2997,7 +2902,6 @@ textarea.error-border{
         --bs-gutter-x: 40px; 
     }
 
-    /* Grid spacing (row-gap) */
 
     .grid-spacer-y-sm-0 { 
         --bs-gutter-y: 0px; 

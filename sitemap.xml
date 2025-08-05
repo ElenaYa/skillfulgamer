@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Main Pages -->
+  <url>
+    <loc>https://skillfulgamer.com/</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Gaming Platform Comparison -->
+  <url>
+    <loc>https://skillfulgamer.com/comparison.html</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Beginner's Guide -->
+  <url>
+    <loc>https://skillfulgamer.com/choise.html</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Top Gaming Platforms -->
+  <url>
+    <loc>https://skillfulgamer.com/top-platforms.html</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  
+  <!-- Contact Information -->
+  <url>
+    <loc>https://skillfulgamer.com/contact.html</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Thank You Page -->
+  <url>
+    <loc>https://skillfulgamer.com/thank-you.html</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <!-- Legal Pages -->
+  <url>
+    <loc>https://skillfulgamer.com/privacy-policy.html</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  
+  <url>
+    <loc>https://skillfulgamer.com/terms-of-service.html</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+   
+  <url>
+    <loc>https://skillfulgamer.com/cookie-policy.html</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+</urlset>
