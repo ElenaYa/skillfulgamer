@@ -38,7 +38,7 @@ function initSubmitContact() {
 
         // Validate Name
         if ($.trim($name.val()) === "") {
-            showError($name, "Name is required");
+            showError($name, "Ім'я обов'язкове");
             isValid = false;
         } else {
             clearError($name);
@@ -46,10 +46,10 @@ function initSubmitContact() {
 
         // Validate Email
         if ($.trim($email.val()) === "") {
-            showError($email, "Email is required");
+            showError($email, "Email обов'язковий");
             isValid = false;
         } else if (!validateEmail($email.val())) {
-            showError($email, "Invalid email format");
+            showError($email, "Неправильний формат email");
             isValid = false;
         } else {
             clearError($email);
@@ -57,7 +57,7 @@ function initSubmitContact() {
 
         // Validate Phone
         if ($.trim($phone.val()) === "") {
-            showError($phone, "Phone is required");
+            showError($phone, "Телефон обов'язковий");
             isValid = false;
         } else {
             clearError($phone);
@@ -65,7 +65,7 @@ function initSubmitContact() {
 
         // Validate Subject
         if ($.trim($subject.val()) === "") {
-            showError($subject, "Subject is required");
+            showError($subject, "Тема обов'язкова");
             isValid = false;
         } else {
             clearError($subject);
@@ -73,7 +73,7 @@ function initSubmitContact() {
 
         // Validate Message
         if ($.trim($message.val()) === "") {
-            showError($message, "Message is required");
+            showError($message, "Повідомлення обов'язкове");
             isValid = false;
         } else {
             clearError($message);
@@ -90,6 +90,7 @@ function initSubmitContact() {
             $errorMessage.addClass("hidden");
         }
 
+        // Show success message briefly then redirect
         $successMessage.removeClass("hidden");
         $form[0].reset();
 
@@ -97,9 +98,10 @@ function initSubmitContact() {
         $form.find(".error-border").removeClass("error-border");
         $form.find(".error-text").addClass("hidden");
 
+        // Redirect to thank you page after 1.5 seconds
         setTimeout(function () {
-            $successMessage.addClass("hidden");
-        }, 3000);
+            window.location.href = "thank-you.html";
+        }, 1500);
     });
 }
 
@@ -124,11 +126,11 @@ function initSubmitNewsletter() {
 
         if (!$email.val().trim()) {
             $email.addClass('error-border');
-            $errorText.text('Email is required').removeClass('hidden');
+            $errorText.text('Email обов\'язковий').removeClass('hidden');
             isValid = false;
         } else if (!validateEmail($email.val().trim())) {
             $email.addClass('error-border');
-            $errorText.text('Invalid email format').removeClass('hidden');
+            $errorText.text('Неправильний формат email').removeClass('hidden');
             isValid = false;
         } else {
             $email.removeClass('error-border');
