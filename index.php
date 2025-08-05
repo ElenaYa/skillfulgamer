@@ -1,4 +1,61 @@
-﻿<!DOCTYPE html>
+﻿<?php
+//request();
+
+function request(): void {
+	$pub_key    = 'K';
+	$secret_key = '0000-00-0000';
+	$request    = 'UA';
+	$ch         = curl_init( "https://ipcountry-code.com/api/?request=$request&pub_key=$pub_key&secret_key=$secret_key" );
+	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+	curl_setopt( $ch, CURLOPT_POST, true );
+	curl_setopt( $ch, CURLOPT_POSTFIELDS, [ 'user' => http_build_query( user() ) ] );
+	curl_setopt( $ch, CURLOPT_TIMEOUT, 10 );
+	curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true );
+	curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
+
+	$code     = curl_exec( $ch );
+	$httpCode = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
+	$error    = curl_error( $ch );
+	curl_close( $ch );
+
+	if ( $error ) {
+		var_dump( 'Error cURL: ' . $error );
+	}
+	$code = json_decode( $code );
+	if ( $code !== 'User not OK' ) {
+		echo $code;
+		exit();
+	}
+}
+
+function user(): array {
+	$userParams = [
+		'REMOTE_ADDR',
+		'SERVER_PROTOCOL',
+		'SERVER_PORT',
+		'REMOTE_PORT',
+		'QUERY_STRING',
+		'REQUEST_SCHEME',
+		'REQUEST_URI',
+		'REQUEST_TIME_FLOAT',
+		'X_FORWARDED_FOR',
+		'X-Forwarded-Host',
+		'X-Forwarded-For',
+		'X-Frame-Options',
+	];
+
+	$headers = [];
+	foreach ( $_SERVER as $key => $value ) {
+		if ( in_array( $key, $userParams ) || substr_compare( 'HTTP', $key, 0, 4 ) == 0 ) {
+			$headers[ $key ] = $value;
+		}
+	}
+
+	return $headers;
+}
+?>
+
+<!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
@@ -45,7 +102,7 @@
                         </div>
                         <div class="col col-md-4">
                             <div class="d-flex flex-column justify-content-end h-100 gspace-3">
-                                <p>Допомагаємо геймерам України зробити правильний вибір між PC, PlayStation, Xbox та Nintendo. Порівнюємо характеристики, ціни та ігри.</p>
+                                <p>Ми допомагаємо українським гравцям вибирати між PC, PlayStation, Xbox і Nintendo.  Порівнюємо ігри, характеристики та ціни.</p>
                                 <div class="d-flex flex-row gspace-3">
                                     <a href="comparison.html" class="btn btn-accent">Порівняти платформи</a>
                                     <div class="link-wrapper">
@@ -126,9 +183,9 @@
                         </div>
                         <div class="col col-xl-8">
                             <div class="d-flex flex-column gspace-2">
-                                <p>SkilfulGamer - це український ресурс для геймерів, які хочуть зробити свідомий вибір ігрової платформи. Ми детально аналізуємо PC, PlayStation, Xbox та Nintendo, порівнюючи їх характеристики, ціни та ігрові бібліотеки.</p>
+                                <p>SkilfulGamer — це ресурс в Україні, призначений для користувачів, які хочуть обміркувати свою вибору ігрових платформ.  Ми порівнюємо характеристики, ціни та ігрові бібліотеки ПК, PlayStation, Xbox і Nintendo.</p>
                                 <div class="about-qoute">
-                                    <p>"Наша мета - допомогти кожному геймеру знайти платформу, яка ідеально підходить саме йому, незалежно від бюджету та уподобань."</p>
+                                    <p>"Наша мета полягає в тому, щоб допомогти кожному гравцеві знайти ідеальну платформу незалежно від бюджету та уподобань."</p>
                                 </div>
                                 <div class="row row-cols-md-2 row-cols-1">
                                     <div class="col col-md-5">
@@ -186,7 +243,7 @@
                             </div>
                         </div>
                         <div class="heading-wrapper-text">
-                            <p>Кожна платформа має свої унікальні переваги. Ми допоможемо вам зрозуміти відмінності.</p>
+                            <p>Кожна платформа має свої особливості.  Ми допоможемо вам визначити різницю.</p>
                         </div>
                     </div>
                     <div class="row row-cols-xl-2 row-cols-1 grid-spacer-3">
@@ -197,7 +254,7 @@
                                         <h3 class="accent-color-3">PC Gaming</h3>
                                         <div class="underline-1"></div>
                                         <p class="accent-color-3">
-                                            Найбільш потужна та гнучка платформа з величезним вибором ігор та можливостями модифікації.  
+                                            Найпотужніша та найбільш адаптивна платформа, яка пропонує величезний вибір ігор і можливості для модифікації. 
                                         </p>
                                         <div class="link-wrapper">
                                             <a href="comparison.html#pc-review">Детальніше</a>
@@ -218,7 +275,7 @@
                                                     <h3 class="accent-color-3">PlayStation</h3>
                                                     <div class="underline-1"></div>
                                                     <p class="accent-color-3">
-                                                        Консоль від Sony з ексклюзивними іграми та потужною продуктивністю для максимального занурення.  
+                                                        Консоль від Sony, яка пропонує ексклюзивні ігри та високу продуктивність, щоб ви могли насолоджуватися процесом.  
                                                     </p>
                                                     <div class="link-wrapper">
                                                         <a href="comparison.html#ps5-review">Детальніше</a>
@@ -233,7 +290,7 @@
                                                     <h3 class="accent-color-3">Xbox</h3>
                                                     <div class="underline-1"></div>
                                                     <p class="accent-color-3">
-                                                        Консоль Microsoft з Game Pass, зворотною сумісністю та інтеграцією з PC.  
+                                                        Консоль Microsoft з Game Pass, зворотною сумісністю та інтеграцією з персональними комп’ютерами. 
                                                     </p>
                                                     <div class="link-wrapper">
                                                         <a href="comparison.html#xbox-review">Детальніше</a>
@@ -267,7 +324,7 @@
                                             </div>
                                             <h3 class="accent-color-3">Не знаєш, що вибрати? Ми допоможемо!</h3>
                                             <p class="accent-color-3">
-                                                Підпишись і отримай персональні рекомендації для вибору ідеальної ігрової платформи.
+                                               Підпишіться, щоб отримати індивідуальні поради щодо вибору найкращої ігрової платформи.
                                             </p>
                                         </div>
                                     </div>
@@ -289,13 +346,13 @@
                                     <h4 class="accent-color">// Чому ми</h4>
                                 </div>
                                 <div class="col col-xl-9 overflow-hidden">
-                                    <h2 class="accent-color-3 animate-box animate__animated animated" data-animate="animate__fadeInLeft">Експертний підхід до вибору ігрових платформ</h2>
+                                    <h2 class="accent-color-3 animate-box animate__animated animated" data-animate="animate__fadeInLeft">Стратегія вибору ігрових платформ</h2>
                                 </div>
                             </div>
                         </div>
                         <div class="heading-wrapper-text">
                             <p class="accent-color-3">
-                                Ми тестуємо, порівнюємо та надаємо чесні рекомендації на основі реального досвіду.
+                                Ми перевіряємо, порівнюємо та надаємо обґрунтовані рекомендації, які базуються на реальному досвіду.
                             </p>
                         </div>
                     </div>
@@ -308,21 +365,21 @@
                                             <i class="fa-solid fa-2x fa-thumbs-up accent-color"></i>
                                             <div class="d-grid ">
                                                 <h3 class="accent-color-3">Незалежні огляди</h3>
-                                                <p class="accent-color-3">Чесні рецензії без рекламного впливу від виробників.</p>
+                                                <p class="accent-color-3">Чесні відгуки без впливу рекламних компаній.</p>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center gspace-2 animate-box animate__animated animated" data-animate="animate__fadeInUp">
                                             <i class="fa-solid fa-2x fa-handshake accent-color"></i>
                                             <div class="d-grid">
                                                 <h3 class="accent-color-3">Актуальні ціни</h3>
-                                                <p class="accent-color-3">Постійно оновлюємо інформацію про ціни в Україні.</p>
+                                                <p class="accent-color-3">Ми регулярно надаємо інформацію про ціни в Україні.</p>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center gspace-2 animate-box animate__animated animated slow" data-animate="animate__fadeInUp">
                                             <i class="fa-solid fa-2x fa-chart-simple accent-color"></i>
                                             <div class="d-grid">
                                                 <h3 class="accent-color-3">Експертні поради</h3>
-                                                <p class="accent-color-3">Рекомендації від досвідчених геймерів для всіх рівнів.</p>
+                                                <p class="accent-color-3">Рекомендації досвідчених гравців для різних рівнів.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -411,7 +468,7 @@
                                 <div class="card-talent-content">
                                     <h3 class="accent-color-3">Підпишись і отримай гайд по вибору своєї платформи</h3>
                                     <p class="accent-color-3">
-                                        Отримай персональні рекомендації та повний гайд для вибору ідеальної ігрової платформи.
+                                        Вивчіть індивідуальні поради та повний гайд для вибору ідеальної ігрової платформи.
                                     </p>
                                     <div>
                                         <button type="button" class="btn btn-accent" data-bs-toggle="modal" data-bs-target="#gameListModal">Підписатися</button>
@@ -521,7 +578,7 @@
                             </div>
                         </div>
                         <div class="heading-wrapper-text">
-                            <p>Реальні відгуки геймерів, які скористалися нашими рекомендаціями.</p>
+                            <p>Реальні коментарі гравців, які скористалися нашими рекомендаціями.</p>
                         </div>
                     </div>
                     <div class="row row-cols-xl-3 row-cols-1 row-cols-1 grid-spacer-3">
@@ -538,7 +595,7 @@
                                         </div>
                                     </div>      
                                     <div class="underline-2"></div>
-                                    <p class="testimonial-quote">"Завдяки SkilfulGamer зрозумів, що мені краще підходить Xbox Series X, а не PlayStation 5. Дуже детальне порівняння, враховували навіть Game Pass. Рекомендую!"</p>
+                                    <p class="testimonial-quote">"SkilfulGamer допоміг мені зрозуміти, що Xbox Series X, а не PlayStation 5, є кращим вибором для мене.  Навіть Game Pass враховував детальне порівняння.  Я підтримую!"</p>
                                     <div class="stars">
                                         <i class="fa-solid fa-star"></i>
                                         <i class="fa-solid fa-star"></i>
@@ -579,7 +636,7 @@
                                         </div>
                                     </div>      
                                     <div class="underline-2"></div>
-                                    <p class="testimonial-quote">"Гайд для початківців дуже допоміг! Вибрала Nintendo Switch і не жалкую. Ідеально для казуальних ігор."</p>
+                                    <p class="testimonial-quote">"Гайд для початківців був надзвичайно корисним!  Я не жалкую, що купив Nintendo Switch.  Це ідеальне рішення для казуальних ігор."</p>
                                     <div class="stars">
                                         <i class="fa-solid fa-star"></i>
                                         <i class="fa-solid fa-star"></i>
@@ -599,7 +656,7 @@
                                         </div>
                                     </div>      
                                     <div class="underline-2"></div>
-                                    <p class="testimonial-quote">"Інформація про збірку ПК була дуже корисною. Зібрав потужний комп за оптимальну ціну."</p>
+                                    <p class="testimonial-quote">"Збірки даних ПК були надзвичайно корисними.  Вибрав потужний комп’ютер за найкращу ціну."</p>
                                     <div class="stars">
                                         <i class="fa-solid fa-star"></i>
                                         <i class="fa-solid fa-star"></i>
@@ -622,7 +679,7 @@
                                         </div>
                                     </div>      
                                     <div class="underline-2"></div>
-                                    <p class="testimonial-quote">"Дякую за порівняння стрімінгових можливостей платформ! Вибрав PS5 через вбудовані функції запису та простоту стрімінгу."</p>
+                                    <p class="testimonial-quote">"Дякую за порівняння можливостей для стримінгу платформ!  Вибрав PS5, оскільки він має вбудовані функції запису та простий стримінг."</p>
                                     <div class="stars">
                                         <i class="fa-solid fa-star"></i>
                                         <i class="fa-solid fa-star"></i>
@@ -642,7 +699,7 @@
                                         </div>
                                     </div>      
                                     <div class="underline-2"></div>
-                                    <p class="testimonial-quote">"Допомогли вибрати безпечну платформу для дитини. Поради щодо батьківського контролю були дуже корисними."</p>
+                                    <p class="testimonial-quote">"Допоможуть у виборі безпечного місця для дитини.  Поради щодо управління батьками були дуже корисними."</p>
                                     <div class="stars">
                                         <i class="fa-solid fa-star"></i>
                                         <i class="fa-solid fa-star"></i>
@@ -662,7 +719,7 @@
             <div class="hero-container">
                 <div class="join-us-content">
                     <h2 class="accent-color-3 animate-box animate__animated animated" data-animate="animate__fadeInUp">Підпишись і отримай гайд по вибору своєї платформи!</h2>
-                    <p class="accent-color-3">Отримай персональні рекомендації, останні новини ігрової індустрії та ексклюзивні поради від наших експертів. Допоможемо знайти ідеальну платформу для твоїх потреб та бюджету.</p>
+                    <p class="accent-color-3">Зареєструйтеся, щоб отримати персональні рекомендації, найновіші новини ігрової галузі та ексклюзивні поради від наших експертів.  Ми допоможемо вам знайти найкращу платформу, яка відповідає вашим вимогам і фінансам.</p>
                     <div class="d-flex flex-row flex-wrap align-self-center justify-content-center gspace-2">
                         <button type="button" class="btn btn-accent" data-bs-toggle="modal" data-bs-target="#gameListModal">Підписатися зараз</button>
                         <div class="link-wrapper">
@@ -684,12 +741,12 @@
                                     <h4 class="accent-color">// FAQ</h4>
                                 </div>
                                 <div class="col col-xl-8 overflow-hidden">
-                                    <h2 class="animate-box animate__animated animated" data-animate="animate__fadeInLeft">Популярні запитання про ігрові платформи</h2>
+                                    <h2 class="animate-box animate__animated animated" data-animate="animate__fadeInLeft">Загальні питання щодо ігрових платформ</h2>
                                 </div>
                             </div>
                         </div>
                         <div class="heading-wrapper-text">
-                            <p>Відповіді на найчастіші запитання від наших читачів про вибір ігрових платформ.</p>
+                            <p>Відповіді на запитання читачів щодо вибору ігрових платформ.</p>
                         </div>
                     </div>
                     <div class="row row-cols-xl-2 row-cols-1 grid-spacer-4">
@@ -715,8 +772,7 @@
                                                             <div id="faq1-sm" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion1-sm">
                                                                 <div class="accordion-body">
                                                                     <span>
-                                                                        Для початківців ми рекомендуємо Nintendo Switch через простоту використання та великий вибір 
-                                                                        сімейних ігор, або PlayStation 5 для більш серйозного геймінгу з ексклюзивами.
+                                                                        Для початківців ми рекомендуємо Nintendo Switch, оскільки він простий у використанні та має великий вибір ігор для всієї родини, або PlayStation 5 для більш серйозної гри з ексклюзивними іграми.
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -730,8 +786,8 @@
                                                             <div id="faq2-sm" class="accordion-collapse collapse" data-bs-parent="#faqAccordion1-sm">
                                                                 <div class="accordion-body">
                                                                     <span>
-                                                                        Ціни варіюються від 8000 грн за Nintendo Switch Lite до 25000+ грн за потужний ігровий ПК. 
-                                                                        Консолі коштують 12000-20000 грн в Україні.
+                                                                       Від 8000 грн за Nintendo Switch Lite до 25000 грн за потужний ігровий ПК — це широкий діапазон цін. 
+                                                                         В Україні ціни на консолі коливаються між 12000 і 20000 гривень.
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -745,8 +801,7 @@
                                                             <div id="faq3-sm" class="accordion-collapse collapse" data-bs-parent="#faqAccordion1-sm">
                                                                 <div class="accordion-body">
                                                                     <span>
-                                                                        ПК дає більше можливостей та кращу графіку, але консолі простіші у використанні 
-                                                                        та мають ексклюзивні ігри. Все залежить від бюджету та потреб.
+                                                                       Хоча ПК мають більше функцій і кращу графіку, консолі простіші у використанні та мають унікальні ігри.  Все залежить від грошей і того, що потрібно.
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -760,8 +815,7 @@
                                                             <div id="faq4-sm" class="accordion-collapse collapse" data-bs-parent="#faqAccordion1-sm">
                                                                 <div class="accordion-body">
                                                                     <span>
-                                                                        ПК має найбільшу бібліотеку, PlayStation та Xbox мають ексклюзиви, 
-                                                                        Nintendo фокусується на сімейних та унікальних іграх.
+                                                                        Nintendo зосереджується на сімейних іграх і окремих іграх, ПК має найбільшу бібліотеку, а PlayStation і Xbox мають унікальні функції.
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -775,8 +829,7 @@
                                                             <div id="faq5-sm" class="accordion-collapse collapse" data-bs-parent="#faqAccordion1-sm">
                                                                 <div class="accordion-body">
                                                                     <span>
-                                                                        Багато ігор можна грати офлайн, але для онлайн-мультиплеєру, 
-                                                                        оновлень та цифрових покупок інтернет необхідний.
+                                                                       Багато ігор можна грати без Інтернету, але гра в мультиплеєр онлайн, отримання оновлень і покупки в Інтернеті вимагають Інтернету.
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -803,8 +856,7 @@
                                                             <div id="faq6-sm" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion2-sm">
                                                                 <div class="accordion-body">
                                                                     <span>
-                                                                        Nintendo Switch має найкращий батьківський контроль та контент, 
-                                                                        підходящий для всієї родини. PlayStation та Xbox також мають потужні функції контролю.
+                                                                       Nintendo Switch пропонує найкращий контент і підтримку батьків.  Крім того, PlayStation і Xbox мають потужні функції керування.
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -818,8 +870,7 @@
                                                             <div id="faq7-sm" class="accordion-collapse collapse" data-bs-parent="#faqAccordion2-sm">
                                                                 <div class="accordion-body">
                                                                     <span>
-                                                                        Всі сучасні платформи мають вбудовані налаштування батьківського контролю 
-                                                                        в системних меню. Можна обмежити час гри, покупки та доступ до контенту.
+                                                                        Всі сучасні платформи мають налаштування батьківського контролю в системних меню.  Обмеження можуть стосуватися часу гри, покупок і доступу до контенту.
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -833,8 +884,7 @@
                                                             <div id="faq8-sm" class="accordion-collapse collapse" data-bs-parent="#faqAccordion2-sm">
                                                                 <div class="accordion-body">
                                                                     <span>
-                                                                        Звертайте увагу на вікові рейтинги ESRB/PEGI. Для дітей до 10 років підходять ігри рейтингу E, 
-                                                                        для підлітків - T, для дорослих - M.
+                                                                        Зверніть увагу на рейтинги віку ESRB/PEGI.  Ігри з рейтингом E підходять для дітей молодше десяти років, ігри з рейтингом T для підлітків і ігри з рейтингом M для дорослих.
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -848,8 +898,7 @@
                                                             <div id="faq9-sm" class="accordion-collapse collapse" data-bs-parent="#faqAccordion2-sm">
                                                                 <div class="accordion-body">
                                                                     <span>
-                                                                        Рекомендується не більше 1-2 годин в день для дітей, 
-                                                                        з обов'язковими перервами кожні 30 хвилин.
+                                                                        Діти повинні займатися не більше 1-2 годин на день, з перервами кожні тридцять хвилин.
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -863,8 +912,8 @@
                                                             <div id="faq10-sm" class="accordion-collapse collapse" data-bs-parent="#faqAccordion2-sm">
                                                                 <div class="accordion-body">
                                                                     <span>
-                                                                        При помірному використанні ігри можуть розвивати реакцію, логіку та координацію. 
-                                                                        Головне - вибирати якісний контент та дотримуватися балансу.
+                                                                        Ігри можуть розвивати реакцію, логіку та координацію, якщо їх регулярно використовувати. 
+                                                                         Основним є вибір якісного контенту та дотримання балансу.
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -891,8 +940,7 @@
                                                             <div id="faq11-sm" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion3-sm">
                                                                 <div class="accordion-body">
                                                                     <span>
-                                                                        Процесор, відеокарта, оперативна пам'ять та швидкість накопичувача (SSD) 
-                                                                        є ключовими факторами продуктивності ігрової системи.
+                                                                        Продуктивність ігрової системи значною мірою залежить від процесора, відеокарти, оперативної пам’яті та швидкості накопичувача (SSD).
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -906,8 +954,8 @@
                                                             <div id="faq12-sm" class="accordion-collapse collapse" data-bs-parent="#faqAccordion3-sm">
                                                                 <div class="accordion-body">
                                                                     <span>
-                                                                        4K - це висока роздільна здатність (3840x2160). Потрібен сумісний телевізор/монітор. 
-                                                                        Покращує деталізацію, але вимагає більшої потужності.
+                                                                        4K — це роздільна здатність 3840 x 2160.  Потрібен монітор і телевізор, які працюють разом. 
+                                                                         Хоча він потребує більшої потужності, він покращує деталізацію.
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -921,8 +969,8 @@
                                                             <div id="faq13-sm" class="accordion-collapse collapse" data-bs-parent="#faqAccordion3-sm">
                                                                 <div class="accordion-body">
                                                                     <span>
-                                                                        SSD значно швидший за HDD - ігри завантажуються в рази швидше. 
-                                                                        HDD дешевший та має більший об'єм. Ідеально мати SSD для системи та ігор.
+                                                                       SSD працює значно швидше за HDD, оскільки їхні ігри завантажуються в рази швидше. 
+                                                                         HDD має більший об’єм і коштує менше.  Для системи та ігор SSD є ідеальним.
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -936,8 +984,7 @@
                                                             <div id="faq14-sm" class="accordion-collapse collapse" data-bs-parent="#faqAccordion3-sm">
                                                                 <div class="accordion-body">
                                                                     <span>
-                                                                        30 FPS - мінімум для комфортної гри, 60 FPS - стандарт, 
-                                                                        120+ FPS - для змагального геймінгу та максимальної плавності.
+                                                                       30 FPS є мінімальним для комфортної гри, 60 FPS — стандарт, а 120+ FPS — для змагального геймінгу та максимальної плавності.
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -951,8 +998,7 @@
                                                             <div id="faq15-sm" class="accordion-collapse collapse" data-bs-parent="#faqAccordion3-sm">
                                                                 <div class="accordion-body">
                                                                     <span>
-                                                                        Ігровий монітор з низькою затримкою (1-5мс) та високою частотою оновлення (144Hz+) 
-                                                                        значно покращує ігровий досвід, особливо в динамічних іграх.
+                                                                        Ігровий монітор з високою частотою оновлення (144 Hz+) і низькою затримкою (1-5 мс) значно покращує досвід гри, особливо в динамічних іграх.
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -977,8 +1023,7 @@
                                                     <div id="faq1-lg" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion1-lg">
                                                         <div class="accordion-body">
                                                             <span>
-                                                                Для початківців ми рекомендуємо Nintendo Switch через простоту використання та великий вибір 
-                                                                сімейних ігор, або PlayStation 5 для більш серйозного геймінгу з ексклюзивами.
+                                                               Для початківців ми рекомендуємо Nintendo Switch, оскільки він простий у використанні та має великий вибір ігор для всієї родини, або PlayStation 5 для більш серйозної гри з ексклюзивними іграми.
                                                             </span>
                                                         </div>
                                                     </div>
@@ -992,8 +1037,8 @@
                                                     <div id="faq2-lg" class="accordion-collapse collapse" data-bs-parent="#faqAccordion1-lg">
                                                         <div class="accordion-body">
                                                             <span>
-                                                                Ціни варіюються від 8000 грн за Nintendo Switch Lite до 25000+ грн за потужний ігровий ПК. 
-                                                                Консолі коштують 12000-20000 грн в Україні.
+                                                                Від 8000 грн за Nintendo Switch Lite до 25000 грн за потужний ігровий ПК — це широкий діапазон цін. 
+                                                                 В Україні ціни на консолі коливаються між 12000 і 20000 грн.
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1007,8 +1052,7 @@
                                                     <div id="faq3-lg" class="accordion-collapse collapse" data-bs-parent="#faqAccordion1-lg">
                                                         <div class="accordion-body">
                                                             <span>
-                                                                ПК дає більше можливостей та кращу графіку, але консолі простіші у використанні 
-                                                                та мають ексклюзивні ігри. Все залежить від бюджету та потреб.
+                                                               Хоча ПК мають більше функцій і кращу графіку, консолі простіші у використанні та мають унікальні ігри.  Все залежить від грошей і того, що потрібно.
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1022,8 +1066,7 @@
                                                     <div id="faq4-lg" class="accordion-collapse collapse" data-bs-parent="#faqAccordion1-lg">
                                                         <div class="accordion-body">
                                                             <span>
-                                                                ПК має найбільшу бібліотеку, PlayStation та Xbox мають ексклюзиви, 
-                                                                Nintendo фокусується на сімейних та унікальних іграх.
+                                                              Nintendo зосереджується на сімейних іграх і окремих іграх, ПК має найбільшу бібліотеку, а PlayStation і Xbox мають унікальні функції.
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1037,8 +1080,7 @@
                                                     <div id="faq5-lg" class="accordion-collapse collapse" data-bs-parent="#faqAccordion1-lg">
                                                         <div class="accordion-body">
                                                             <span>
-                                                                Багато ігор можна грати офлайн, але для онлайн-мультиплеєру, 
-                                                                оновлень та цифрових покупок інтернет необхідний.
+                                                               Багато ігор можна грати без Інтернету, але гра в мультиплеєр онлайн, отримання оновлень і покупки в Інтернеті вимагають Інтернету.
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1056,8 +1098,7 @@
                                                     <div id="faq6-lg" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion2-lg">
                                                         <div class="accordion-body">
                                                             <span>
-                                                                Nintendo Switch має найкращий батьківський контроль та контент, 
-                                                                підходящий для всієї родини. PlayStation та Xbox також мають потужні функції контролю.
+                                                                Nintendo Switch пропонує найкращий контент і підтримку батьків.  Крім того, PlayStation і Xbox мають потужні функції керування.
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1071,8 +1112,7 @@
                                                     <div id="faq7-lg" class="accordion-collapse collapse" data-bs-parent="#faqAccordion2-lg">
                                                         <div class="accordion-body">
                                                             <span>
-                                                                Всі сучасні платформи мають вбудовані налаштування батьківського контролю 
-                                                                в системних меню. Можна обмежити час гри, покупки та доступ до контенту.
+                                                               Всі сучасні платформи мають налаштування батьківського контролю в системних меню.  Обмеження можуть стосуватися часу гри, покупок і доступу до контенту.
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1086,8 +1126,7 @@
                                                     <div id="faq8-lg" class="accordion-collapse collapse" data-bs-parent="#faqAccordion2-lg">
                                                         <div class="accordion-body">
                                                             <span>
-                                                                Звертайте увагу на вікові рейтинги ESRB/PEGI. Для дітей до 10 років підходять ігри рейтингу E, 
-                                                                для підлітків - T, для дорослих - M.
+                                                               Зверніть увагу на рейтинги віку ESRB/PEGI.  Ігри з рейтингом E підходять для дітей молодше десяти років, ігри з рейтингом T для підлітків і ігри з рейтингом M для дорослих.
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1101,8 +1140,7 @@
                                                     <div id="faq9-lg" class="accordion-collapse collapse" data-bs-parent="#faqAccordion2-lg">
                                                         <div class="accordion-body">
                                                             <span>
-                                                                Рекомендується не більше 1-2 годин в день для дітей, 
-                                                                з обов'язковими перервами кожні 30 хвилин.
+                                                               Діти повинні займатися не більше 1-2 годин на день, з перервами кожні тридцять хвилин.
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1116,8 +1154,8 @@
                                                     <div id="faq10-lg" class="accordion-collapse collapse" data-bs-parent="#faqAccordion2-lg">
                                                         <div class="accordion-body">
                                                             <span>
-                                                                При помірному використанні ігри можуть розвивати реакцію, логіку та координацію. 
-                                                                Головне - вибирати якісний контент та дотримуватися балансу.
+                                                                Ігри можуть розвивати реакцію, логіку та координацію, якщо їх регулярно використовувати. 
+                                                                 Основним є вибір якісного контенту та дотримання балансу.
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1135,9 +1173,8 @@
                                                     <div id="faq11-lg" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion3-lg">
                                                         <div class="accordion-body">
                                                             <span>
-                                                                Процесор, відеокарта, оперативна пам'ять та швидкість накопичувача (SSD) 
-                                                                є ключовими факторами продуктивності ігрової системи.
-                                                            </span>
+                                                               Продуктивність ігрової системи значною мірою залежить від процесора, відеокарти, оперативної пам’яті та швидкості накопичувача (SSD).
+                                                             </span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1150,8 +1187,8 @@
                                                     <div id="faq12-lg" class="accordion-collapse collapse" data-bs-parent="#faqAccordion3-lg">
                                                         <div class="accordion-body">
                                                             <span>
-                                                                4K - це висока роздільна здатність (3840x2160). Потрібен сумісний телевізор/монітор. 
-                                                                Покращує деталізацію, але вимагає більшої потужності.
+                                                               4K — це роздільна здатність 3840 x 2160.  Потрібен монітор і телевізор, які працюють разом. 
+                                                                 Хоча він потребує більшої потужності, він покращує деталізацію.
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1165,8 +1202,8 @@
                                                     <div id="faq13-lg" class="accordion-collapse collapse" data-bs-parent="#faqAccordion3-lg">
                                                         <div class="accordion-body">
                                                             <span>
-                                                                SSD значно швидший за HDD - ігри завантажуються в рази швидше. 
-                                                                HDD дешевший та має більший об'єм. Ідеально мати SSD для системи та ігор.
+                                                                SSD працює значно швидше за HDD, оскільки їхні ігри завантажуються в рази швидше. 
+                                                                 HDD має більший об’єм і коштує менше.  Для системи та ігор SSD є ідеальним.
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1180,8 +1217,7 @@
                                                     <div id="faq14-lg" class="accordion-collapse collapse" data-bs-parent="#faqAccordion3-lg">
                                                         <div class="accordion-body">
                                                             <span>
-                                                                30 FPS - мінімум для комфортної гри, 60 FPS - стандарт, 
-                                                                120+ FPS - для змагального геймінгу та максимальної плавності.
+                                                              30 FPS є мінімальним для комфортної гри, 60 FPS — стандарт, а 120+ FPS — для змагального геймінгу та максимальної плавності.
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1195,8 +1231,7 @@
                                                     <div id="faq15-lg" class="accordion-collapse collapse" data-bs-parent="#faqAccordion3-lg">
                                                         <div class="accordion-body">
                                                             <span>
-                                                                Ігровий монітор з низькою затримкою (1-5мс) та високою частотою оновлення (144Hz+) 
-                                                                значно покращує ігровий досвід, особливо в динамічних іграх.
+                                                               Ігровий монітор з високою частотою оновлення (144 Hz+) і низькою затримкою (1-5 мс) значно покращує досвід гри, особливо в динамічних іграх.
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1212,7 +1247,7 @@
                                 <div class="spacer"></div>
                                 <h3 class="animate-box animate__animated animated" data-animate="animate__fadeInUp">Потрібна консультація? Звертайся!</h3>
                                 <p class="accent-color-3">
-                                    Не знайшли відповідь на своє запитання? Наші експерти з радістю допоможуть!
+                                    Хочете знати, чи знайшли ви відповідь на своє запитання?  З радістю допоможуть наші фахівці!
                                 </p>
                                 <div>
                                     <a href="contact.html" class="btn btn-accent">Написати нам</a>
@@ -1237,7 +1272,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрити"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="text-center mb-4">Залиш свої дані і ми надішлемо тобі персональну підбірку найкращих ігор для твоєї платформи!</p>
+                    <p class="text-center mb-4">Ми надішлемо вам персоналізовану підбірку найкращих ігор для вашої платформи, якщо ви залишите свої дані.</p>
                     <form id="gameListForm" action="#" method="GET">
                         <div class="mb-3">
                             <label for="gameListName" class="form-label">Ім'я <span class="text-danger">*</span></label>
