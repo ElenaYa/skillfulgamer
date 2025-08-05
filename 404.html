@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Сторінка не знайдена - SkilfulGamer</title>
+    <meta name="description" content="Сторінка не знайдена. Поверніться на головну сторінку SkilfulGamer для вибору ігрової платформи.">
+    
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="css/vendor/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/vendor/animate.min.css">
+    <link rel="stylesheet" href="css/vendor/font-family-inter.css">
+    <link rel="stylesheet" href="css/vendor/font-family-instrument-sans.css">
+    <link rel="stylesheet" href="css/vendor/fontawesome.css">
+    <link rel="stylesheet" href="css/vendor/solid.css">
+    <link rel="stylesheet" href="css/vendor/regular.css">
+    <link rel="stylesheet" href="css/vendor/brand.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="image/favicon.png">
+</head>
+<body>
+    
+    <!-- Header Section -->
+    <header>
+        <!-- Navbar Section -->
+        <div id="header"></div>
+    </header>
+
+    <!-- Sidebar Section -->
+     <aside>
+        <div id="sidebar"></div>
+     </aside>
+
+    <!-- Main Section -->
+    <main>
+        <!-- Banner Section -->
+        <div class="section-banner-inner inner-background">
+            <div class="hero-container">
+                <div class="d-flex flex-column gspace-3">
+                    <h1 class="animate-box animate__animated animated" data-animate="animate__fadeInLeft">404 - <span class="heading-wrapper">Сторінка не знайдена</span></h1>
+                    <nav class="breadcrumb">
+                        <a href="index.html">Головна</a>
+                        <i class="fa-solid fa-chevron-right"></i>
+                        <a href="#">404</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- 404 Content Section -->
+        <div class="section">
+            <div class="hero-container">
+                <div class="d-flex flex-column align-items-center justify-content-center text-center gspace-5" style="min-height: 60vh;">
+                    <div class="d-flex flex-column align-items-center gspace-4">
+                        <!-- Large 404 Number -->
+                        <div class="error-code">
+                            <h1 style="font-size: 8rem; font-weight: bold; color: var(--accent-color); margin: 0; line-height: 0.8;">404</h1>
+                        </div>
+                        
+                        <!-- Error Message -->
+                        <div class="error-message">
+                            <h2 class="animate-box animate__animated animated" data-animate="animate__fadeInUp">Упс! Сторінка не знайдена</h2>
+                            <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: var(--text-color-2);">
+                                Схоже, що сторінка, яку ви шукаєте, не існує або була переміщена. Можливо, ви перейшли за застарілим посиланням або зробили помилку в адресі.
+                            </p>
+                        </div>
+
+                        <!-- Gaming Theme Message -->
+                        <div class="gaming-message">
+                            <p style="font-size: 1.1rem; color: var(--text-color-2); margin: 1rem 0;">
+                                <i class="fa-solid fa-gamepad" style="color: var(--accent-color); margin-right: 0.5rem;"></i>
+                                Поки ви тут, чому б не дізнатися більше про ігрові платформи?
+                            </p>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex flex-column flex-md-row align-items-center justify-content-center gspace-3">
+                            <a href="index.html" class="btn btn-accent">
+                                <i class="fa-solid fa-home"></i>
+                                Головна
+                            </a>
+                            <a href="comparison.html" class="btn btn-outline-primary">
+                                <i class="fa-solid fa-balance-scale"></i>
+                                Порівняти платформи
+                            </a>
+                            <a href="contact.html" class="btn btn-outline-secondary">
+                                <i class="fa-solid fa-envelope"></i>
+                                Зв'язатися з нами
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div id="footer"></div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="js/vendor/swiper-bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/swiper-script.js"></script>
+    <script src="js/vendor/isotope.pkgd.min.js"></script>
+    <script src="js/vendor/fslightbox.js"></script>
+    <script src="js/video_embedded.js"></script>
+    
+    <script>
+        // Load header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        // Load sidebar
+        fetch('sidebar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('sidebar').innerHTML = data;
+            });
+
+        // Load footer
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+    </script>
+</body>
+</html>
