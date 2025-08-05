@@ -7,7 +7,6 @@
     <title>Топ платформи 2025 - SkilfulGamer - Порівняння ігрових платформ</title>
     <meta name="description" content="Рейтинг найкращих ігрових платформ 2025 року. Огляди топових консолей та PC конфігурацій з актуальними цінами в Україні.">
     
-    <!-- Open Graph meta tags -->
     <meta property="og:title" content="Топ ігрових платформ 2025 - SkilfulGamer">
     <meta property="og:description" content="Рейтинг найкращих ігрових платформ 2025 року. Огляди топових консолей та PC конфігурацій з актуальними цінами.">
     <meta property="og:type" content="article">
@@ -18,7 +17,6 @@
     <meta property="og:site_name" content="SkilfulGamer">
     <meta property="og:locale" content="uk_UA">
     
-    <!-- Twitter Card meta tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Топ ігрових платформ 2025 - SkilfulGamer">
     <meta name="twitter:description" content="Рейтинг найкращих ігрових платформ 2025 року. Огляди топових консолей та PC конфігурацій з актуальними цінами.">
@@ -28,33 +26,27 @@
     <link rel="icon" href="image/favicon.png">
 </head>
 <body>
-    <!-- Header Section -->
     <header>
-        <!-- Navbar Section -->
         <div id="header"></div>
     </header>
 
-    <!-- Sidebar Section -->
     <aside>
         <div id="sidebar"></div>
     </aside>
 
-    <!-- Main Section -->
     <main>
-        <!-- Banner Section -->
         <div class="section-banner-inner inner-background">
             <div class="hero-container">
                 <div class="d-flex flex-column gspace-3">
                     <h1 class="animate-box animate__animated animated" data-animate="animate__fadeInLeft">Топ ігрових <span class="heading-wrapper">платформ 2025</span></h1>
                     <nav class="breadcrumb">
-                        <a href="index.html">Головна</a>
+                        <a href="/">Головна</a>
                         <i class="fa-solid fa-chevron-right"></i>
                         <a href="#">Топ платформи 2025</a>
                     </nav>
                 </div>
             </div>
         </div>
-  <!-- Service Section -->
             <div class="section bg-accent-color-4">
                 <div class="hero-container">
                     <div class="d-flex flex-column gspace-5">
@@ -156,7 +148,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Why Choose Us Section -->
             <div class="section whychoose-banner">
                 <div class="hero-container">
                     <div class="d-flex flex-column gspace-5">
@@ -263,7 +254,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Testimonial Section -->
             <div class="section bg-accent-color-4">
                 <div class="hero-container">
                     <div class="d-flex flex-column gspace-3">
@@ -431,7 +421,6 @@
   <div class="mt-2 small text-muted">*Переходьте за посиланням, щоб побачити всі доступні новинки прямо зараз.</div>
 </div>
 
-            <!-- Join Us Section -->
             <div class="section join-us-banner">
                 <div class="hero-container">
                     <div class="join-us-content">
@@ -447,7 +436,6 @@
                     </div>
                 </div>
             </div>
-            <!-- FAQs Section -->
             <div class="section bg-accent-color-4">
                 <div class="hero-container">
                     <div class="d-flex flex-column gspace-5">
@@ -640,7 +628,6 @@
                     </div>
                 </div>
             </div>
-        <!-- Service Detail Section -->
         <div class="section">
             <div class="hero-container">
                 <div class="row row-cols-md-2 row-cols-1 grid-spacer-3">
@@ -692,7 +679,7 @@
                                 <ul class="other-service-list">
                                     <li><a href="comparison.html">Порівняння платформ</a></li>
                                     <li><a href="choise.html">Гайд для новачків</a></li>
-                                    <li><a href="index.html">Головна сторінка</a></li>
+                                    <li><a href="/">Головна сторінка</a></li>
                                 </ul>
                             </div>
                             <div class="contactus-cta">
@@ -709,12 +696,10 @@
         </div>
     </main>
 
-    <!-- Footer Section -->
     <footer>
         <div id="footer"></div>
     </footer>
     
-    <!-- Game List Request Modal -->
     <div class="modal fade" id="gameListModal" tabindex="-1" aria-labelledby="gameListModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -746,7 +731,6 @@
                                 <option value="mobile">Мобільні ігри</option>
                             </select>
                         </div>
-                        <!-- Hidden GCLID field for Google Ads tracking -->
                         <input type="hidden" id="gameListGclid" name="gclid" value="">
                         <div class="d-grid">
                             <button type="submit" class="btn btn-accent">Отримати підбірку ігор</button>
@@ -775,9 +759,7 @@
     <script src="js/vendor/fslightbox.js"></script>
     <script src="js/video_embedded.js"></script>
     
-    <!-- GCLID Handler Script -->
     <script>
-        // Function to get URL parameter
         function getUrlParameter(name) {
             name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
@@ -785,20 +767,16 @@
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         }
         
-        // Function to set GCLID in forms
         function setGclidInForms() {
             var gclid = getUrlParameter('gclid');
             if (gclid) {
-                // Store GCLID in localStorage for future page visits
                 localStorage.setItem('gclid', gclid);
                 
-                // Set GCLID in all forms with gclid field
                 var gclidFields = document.querySelectorAll('input[name="gclid"]');
                 gclidFields.forEach(function(field) {
                     field.value = gclid;
                 });
             } else {
-                // Check if we have stored GCLID from previous visit
                 var storedGclid = localStorage.getItem('gclid');
                 if (storedGclid) {
                     var gclidFields = document.querySelectorAll('input[name="gclid"]');
@@ -809,15 +787,89 @@
             }
         }
         
-        // Run when page loads
         document.addEventListener('DOMContentLoaded', function() {
             setGclidInForms();
         });
         
-        // Also run when modal opens to ensure GCLID is set
         document.addEventListener('shown.bs.modal', function() {
             setGclidInForms();
         });
     </script>
+
+    <div id="cookieConsent" class="cookie-consent-banner">
+        <div class="cookie-consent-content">
+            <div class="cookie-icon">
+                <i class="fa-solid fa-cookie-bite"></i>
+            </div>
+            <div class="cookie-text">
+                <h4>Ми використовуємо cookies</h4>
+                <p>Наш сайт використовує файли cookie для покращення вашого досвіду. Продовжуючи користуватися сайтом, ви погоджуєтеся з нашою <a href="cookie-policy.html" class="cookie-link">політикою щодо cookie</a> та <a href="privacy-policy.html" class="cookie-link">політикою конфіденційності</a>.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button id="acceptCookies" class="btn btn-accent btn-sm">Прийняти всі</button>
+                <button id="declineCookies" class="btn btn-outline-secondary btn-sm">Відхилити</button>
+                <button id="cookieSettings" class="btn btn-link btn-sm">Налаштування</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="cookieSettingsModal" tabindex="-1" aria-labelledby="cookieSettingsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cookieSettingsModalLabel">Налаштування cookies</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрити"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Оберіть, які типи cookies ви хочете дозволити:</p>
+                    
+                    <div class="cookie-category mb-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6>Необхідні cookies</h6>
+                                <small class="text-muted">Ці cookies необхідні для роботи сайту і не можуть бути відключені.</small>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="essentialCookies" checked disabled>
+                                <label class="form-check-label" for="essentialCookies">Увімкнено</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cookie-category mb-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6>Аналітичні cookies</h6>
+                                <small class="text-muted">Допомагають нам зрозуміти, як відвідувачі взаємодіють з сайтом.</small>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="analyticsCookies">
+                                <label class="form-check-label" for="analyticsCookies">Дозволити</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cookie-category mb-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6>Маркетингові cookies</h6>
+                                <small class="text-muted">Використовуються для показу релевантної реклами та відстеження ефективності кампаній.</small>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="marketingCookies">
+                                <label class="form-check-label" for="marketingCookies">Дозволити</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+                    <button type="button" class="btn btn-accent" id="saveCookieSettings">Зберегти налаштування</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/cookie-consent.js"></script>
 </body>
 </html>

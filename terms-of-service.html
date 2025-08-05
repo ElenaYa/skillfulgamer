@@ -7,7 +7,6 @@
     <title>Умови використання - SkilfulGamer - Порівняння ігрових платформ</title>
     <meta name="description" content="Умови використання сайту SkilfulGamer. Правила та умови користування нашим ресурсом для геймерів.">
     
-    <!-- Open Graph meta tags -->
     <meta property="og:title" content="Умови використання - SkilfulGamer">
     <meta property="og:description" content="Умови використання сайту SkilfulGamer. Правила та умови користування нашим ресурсом для геймерів.">
     <meta property="og:type" content="website">
@@ -18,7 +17,6 @@
     <meta property="og:site_name" content="SkilfulGamer">
     <meta property="og:locale" content="uk_UA">
     
-    <!-- Twitter Card meta tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Умови використання - SkilfulGamer">
     <meta name="twitter:description" content="Умови використання сайту SkilfulGamer. Правила та умови користування нашим ресурсом для геймерів.">
@@ -28,20 +26,15 @@
     <link rel="icon" href="image/favicon.png">
 </head>
 <body>
-    <!-- Header Section -->
     <header>
-        <!-- Navbar Section -->
         <div id="header"></div>
     </header>
 
-    <!-- Sidebar Section -->
     <aside>
         <div id="sidebar"></div>
     </aside>
 
-    <!-- Main Section -->
     <main>
-        <!-- Banner Section -->
         <div class="section-banner-inner inner-background">
         <div class="hero-container">
             <div class="d-flex flex-column text-center gspace-3">
@@ -72,7 +65,6 @@
         </div>
         </div>
 
-        <!-- Post Section -->
         <div class="section">
             <div class="hero-container">
                 <div class="d-flex flex-column gspace-3">
@@ -288,12 +280,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="d-flex flex-row gap-3 align-items-center position-relative" onclick="window.location.href='index.html'">
+                                    <div class="d-flex flex-row gap-3 align-items-center position-relative" onclick="window.location.href='/'">
                                         <div class="other-post-img">
                                             <i class="fa-solid fa-home fa-2x accent-color"></i>
                                         </div>
                                         <div class="d-grid">
-                                            <a href="index.html" class="blog-link other-post">Повернутися на головну</a>
+                                            <a href="/" class="blog-link other-post">Повернутися на головну</a>
                                             <div class="d-flex flex-row align-items-center gspace-1">
                                                 <i class="fa-solid fa-arrow-left accent-color-3"></i>
                                                 <span class="meta-data">Головна сторінка</span>
@@ -316,11 +308,82 @@
         </div>
     </main>
 
-    <!-- Footer Section -->
     <footer>
         <div id="footer"></div>
     </footer>
+    <div id="cookieConsent" class="cookie-consent-banner">
+        <div class="cookie-consent-content">
+            <div class="cookie-icon">
+                <i class="fa-solid fa-cookie-bite"></i>
+            </div>
+            <div class="cookie-text">
+                <h4>Ми використовуємо cookies</h4>
+                <p>Наш сайт використовує файли cookie для покращення вашого досвіду. Продовжуючи користуватися сайтом, ви погоджуєтеся з нашою <a href="cookie-policy.html" class="cookie-link">політикою щодо cookie</a> та <a href="privacy-policy.html" class="cookie-link">політикою конфіденційності</a>.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button id="acceptCookies" class="btn btn-accent btn-sm">Прийняти всі</button>
+                <button id="declineCookies" class="btn btn-outline-secondary btn-sm">Відхилити</button>
+                <button id="cookieSettings" class="btn btn-link btn-sm">Налаштування</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="cookieSettingsModal" tabindex="-1" aria-labelledby="cookieSettingsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cookieSettingsModalLabel">Налаштування cookies</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрити"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Оберіть, які типи cookies ви хочете дозволити:</p>
+                    
+                    <div class="cookie-category mb-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6>Необхідні cookies</h6>
+                                <small class="text-muted">Ці cookies необхідні для роботи сайту і не можуть бути відключені.</small>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="essentialCookies" checked disabled>
+                                <label class="form-check-label" for="essentialCookies">Увімкнено</label>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="cookie-category mb-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6>Аналітичні cookies</h6>
+                                <small class="text-muted">Допомагають нам зрозуміти, як відвідувачі взаємодіють з сайтом.</small>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="analyticsCookies">
+                                <label class="form-check-label" for="analyticsCookies">Дозволити</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cookie-category mb-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6>Маркетингові cookies</h6>
+                                <small class="text-muted">Використовуються для показу релевантної реклами та відстеження ефективності кампаній.</small>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="marketingCookies">
+                                <label class="form-check-label" for="marketingCookies">Дозволити</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+                    <button type="button" class="btn btn-accent" id="saveCookieSettings">Зберегти налаштування</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/cookie-consent.js"></script>
     <script src="js/vendor/jquery.min.js"></script>
     <script src="js/vendor/bootstrap.bundle.min.js"></script>
     <script src="js/vendor/swiper-bundle.min.js"></script>
@@ -330,5 +393,6 @@
     <script src="js/vendor/isotope.pkgd.min.js"></script>
     <script src="js/vendor/fslightbox.js"></script>
     <script src="js/video_embedded.js"></script>
+    
 </body>
 </html>

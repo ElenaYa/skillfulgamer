@@ -21,7 +21,7 @@ function initSubmitContact() {
                 
                 localStorage.removeItem('contactFormData');
             } catch (e) {
-                console.log('Error restoring form data:', e);
+               
             }
         }
     }

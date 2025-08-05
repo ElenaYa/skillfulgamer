@@ -7,7 +7,6 @@
     <title>Порівняння платформ - SkilfulGamer - Порівняння ігрових платформ</title>
     <meta name="description" content="Детальне порівняння ігрових платформ: PC Gaming, PlayStation 5, Xbox Series X, Nintendo Switch. Огляди характеристик, цін та ігрових бібліотек.">
     
-    <!-- Open Graph meta tags -->
     <meta property="og:title" content="Порівняння ігрових платформ - SkilfulGamer">
     <meta property="og:description" content="Детальне порівняння PC Gaming, PlayStation 5, Xbox Series X, Nintendo Switch. Характеристики, ціни, ігрові бібліотеки.">
     <meta property="og:type" content="article">
@@ -18,7 +17,6 @@
     <meta property="og:site_name" content="SkilfulGamer">
     <meta property="og:locale" content="uk_UA">
     
-    <!-- Twitter Card meta tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Порівняння ігрових платформ - SkilfulGamer">
     <meta name="twitter:description" content="Детальне порівняння PC Gaming, PlayStation 5, Xbox Series X, Nintendo Switch. Характеристики, ціни, ігрові бібліотеки.">
@@ -28,26 +26,21 @@
     <link rel="icon" href="image/favicon.png">
 </head>
 <body>
-    <!-- Header Section -->
     <header>
-        <!-- Navbar Section -->
         <div id="header"></div>
     </header>
 
-    <!-- Sidebar Section -->
     <aside>
         <div id="sidebar"></div>
     </aside>
 
-    <!-- Main Section -->
     <main>
-        <!-- Banner Section -->
         <div class="section-banner-inner inner-background">
             <div class="hero-container">
                 <div class="d-flex flex-column gspace-3">
                     <h1 class="animate-box animate__animated animated" data-animate="animate__fadeInLeft">Порівняння <span class="heading-wrapper">ігрових платформ</span></h1>
                     <nav class="breadcrumb">
-                        <a href="index.html">Головна</a>
+                        <a href="/">Головна</a>
                         <i class="fa-solid fa-chevron-right"></i>
                         <a href="#">Порівняння платформ</a>
                     </nav>
@@ -55,7 +48,6 @@
             </div>
         </div>
 
-         <!-- Partner Section -->
         <div class="section">
             <div class="hero-container">
                 <div class="d-flex flex-column gspace-4 justify-content-center text-center">
@@ -88,7 +80,6 @@
             </div>
         </div>
 
-        <!-- About Section -->
         <div class="section">
             <div class="hero-container">
                 <div class="d-flex flex-column gspace-3">
@@ -154,7 +145,6 @@
             </div>
         </div>
 
-        <!-- Why Choose Us Section -->
         <div class="section whychoose-banner">
             <div class="hero-container">
                 <div class="d-flex flex-column gspace-5">
@@ -263,16 +253,7 @@
             </div>
         </div>
 
-        <!-- Modal Video Section -->
-        <div class="section p-0">
-            <div id="modal-overlay" class="modal-overlay">
-                <span class="modal-close"><i class="fa-solid fa-xmark"></i></span>
-                <div class="modal-video">
-                <iframe id="modal-video-frame" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-          <!-- Comparison Table Section -->
+       
     <div class="section">
         <div class="hero-container">
             <div class="d-flex flex-column gspace-5">
@@ -567,7 +548,6 @@
                 </div>
             </div>
         </div>
-    <!-- Platform Reviews Navigation -->
     <div class="section">
         <div class="hero-container">
             <div class="d-flex flex-column gspace-3 text-center">
@@ -582,7 +562,6 @@
         </div>
     </div>
 
-    <!-- PC Gaming Review Section -->
     <div class="section" id="pc-review">
         <div class="hero-container">
             <div class="d-flex flex-column gspace-5">
@@ -720,7 +699,6 @@
         </div>
     </div>
 
-    <!-- PlayStation 5 Review Section -->
     <div class="section" id="ps5-review">
         <div class="hero-container">
             <div class="d-flex flex-column gspace-5">
@@ -858,7 +836,6 @@
         </div>
     </div>
 
-    <!-- Xbox Series X Review Section -->
     <div class="section" id="xbox-review">
         <div class="hero-container">
             <div class="d-flex flex-column gspace-5">
@@ -995,7 +972,6 @@
         </div>
     </div>
 
-    <!-- Nintendo Switch Review Section -->
     <div class="section" id="nintendo-review">
         <div class="hero-container">
             <div class="d-flex flex-column gspace-5">
@@ -1136,12 +1112,10 @@
 
     </main>
 
-    <!-- Footer Section -->
     <footer>
         <div id="footer"></div>
     </footer>
 
-    <!-- Mini Test Modal -->
     <div class="modal fade" id="miniTestModal" tabindex="-1" aria-labelledby="miniTestModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
@@ -1278,19 +1252,16 @@
     <script src="js/vendor/fslightbox.js"></script>
     <script src="js/video_embedded.js"></script>
     
-    <!-- Mini Test Script -->
     <script>
     $(document).ready(function() {
         let currentQuestion = 1;
         const totalQuestions = 5;
         let answers = {};
 
-        // Navigation functions
         function showQuestion(questionNum) {
             $('.test-question').removeClass('active').hide();
             $(`.test-question[data-question="${questionNum}"]`).addClass('active').show();
             
-            // Update navigation buttons
             if (questionNum === 1) {
                 $('#prevBtn').hide();
             } else {
@@ -1306,7 +1277,6 @@
             }
         }
 
-        // Next button click
         $('#nextBtn').click(function() {
             const currentQuestionData = $(`.test-question[data-question="${currentQuestion}"]`);
             const selectedAnswer = currentQuestionData.find('input[type="radio"]:checked');
@@ -1316,7 +1286,6 @@
                 return;
             }
             
-            // Save answer
             const questionName = selectedAnswer.attr('name');
             answers[questionName] = selectedAnswer.val();
             
@@ -1326,7 +1295,6 @@
             }
         });
 
-        // Previous button click
         $('#prevBtn').click(function() {
             if (currentQuestion > 1) {
                 currentQuestion--;
@@ -1334,7 +1302,6 @@
             }
         });
 
-        // Finish test
         $('#finishBtn').click(function() {
             const currentQuestionData = $(`.test-question[data-question="${currentQuestion}"]`);
             const selectedAnswer = currentQuestionData.find('input[type="radio"]:checked');
@@ -1344,16 +1311,13 @@
                 return;
             }
             
-            // Save last answer
             const questionName = selectedAnswer.attr('name');
             answers[questionName] = selectedAnswer.val();
             
-            // Calculate result
             const result = calculateResult(answers);
             showResult(result);
         });
 
-        // Restart test
         $('#restartBtn').click(function() {
             currentQuestion = 1;
             answers = {};
@@ -1365,7 +1329,6 @@
             $('.test-navigation').show();
         });
 
-        // Calculate result based on answers
         function calculateResult(answers) {
             let scores = {
                 pc: 0,
@@ -1374,7 +1337,6 @@
                 nintendo: 0
             };
 
-            // Experience scoring
             switch(answers.experience) {
                 case 'beginner': scores.nintendo += 2; scores.xbox += 1; break;
                 case 'casual': scores.nintendo += 1; scores.ps5 += 1; scores.xbox += 1; break;
@@ -1382,7 +1344,6 @@
                 case 'hardcore': scores.pc += 2; scores.ps5 += 1; break;
             }
 
-            // Budget scoring
             switch(answers.budget) {
                 case 'low': scores.nintendo += 2; scores.xbox += 1; break;
                 case 'medium': scores.ps5 += 2; scores.xbox += 2; break;
@@ -1390,7 +1351,6 @@
                 case 'unlimited': scores.pc += 2; break;
             }
 
-            // Games scoring
             switch(answers.games) {
                 case 'aaa': scores.pc += 1; scores.ps5 += 2; scores.xbox += 1; break;
                 case 'indie': scores.pc += 2; scores.nintendo += 1; break;
@@ -1398,7 +1358,6 @@
                 case 'competitive': scores.pc += 2; scores.xbox += 1; break;
             }
 
-            // Location scoring
             switch(answers.location) {
                 case 'home': scores.pc += 1; scores.ps5 += 1; scores.xbox += 1; break;
                 case 'mixed': scores.nintendo += 1; break;
@@ -1406,7 +1365,6 @@
                 case 'flexible': scores.nintendo += 2; break;
             }
 
-            // Graphics scoring
             switch(answers.graphics) {
                 case 'not-important': scores.nintendo += 2; break;
                 case 'moderate': scores.nintendo += 1; scores.ps5 += 1; scores.xbox += 1; break;
@@ -1414,7 +1372,6 @@
                 case 'critical': scores.pc += 2; break;
             }
 
-            // Find platform with highest score
             let maxScore = 0;
             let recommendedPlatform = 'pc';
             
@@ -1431,7 +1388,6 @@
             };
         }
 
-        // Show result
         function showResult(result) {
             const platformData = {
                 pc: {
@@ -1494,10 +1450,8 @@
             $('#restartBtn').show();
         }
 
-        // Initialize test
         showQuestion(currentQuestion);
         
-        // Reset test when modal is closed
         $('#miniTestModal').on('hidden.bs.modal', function() {
             currentQuestion = 1;
             answers = {};
@@ -1510,5 +1464,81 @@
         });
     });
     </script>
+
+    <div id="cookieConsent" class="cookie-consent-banner">
+        <div class="cookie-consent-content">
+            <div class="cookie-icon">
+                <i class="fa-solid fa-cookie-bite"></i>
+            </div>
+            <div class="cookie-text">
+                <h4>Ми використовуємо cookies</h4>
+                <p>Наш сайт використовує файли cookie для покращення вашого досвіду. Продовжуючи користуватися сайтом, ви погоджуєтеся з нашою <a href="cookie-policy.html" class="cookie-link">політикою щодо cookie</a> та <a href="privacy-policy.html" class="cookie-link">політикою конфіденційності</a>.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button id="acceptCookies" class="btn btn-accent btn-sm">Прийняти всі</button>
+                <button id="declineCookies" class="btn btn-outline-secondary btn-sm">Відхилити</button>
+                <button id="cookieSettings" class="btn btn-link btn-sm">Налаштування</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="cookieSettingsModal" tabindex="-1" aria-labelledby="cookieSettingsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cookieSettingsModalLabel">Налаштування cookies</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрити"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Оберіть, які типи cookies ви хочете дозволити:</p>
+                    
+                    <div class="cookie-category mb-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6>Необхідні cookies</h6>
+                                <small class="text-muted">Ці cookies необхідні для роботи сайту і не можуть бути відключені.</small>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="essentialCookies" checked disabled>
+                                <label class="form-check-label" for="essentialCookies">Увімкнено</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cookie-category mb-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6>Аналітичні cookies</h6>
+                                <small class="text-muted">Допомагають нам зрозуміти, як відвідувачі взаємодіють з сайтом.</small>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="analyticsCookies">
+                                <label class="form-check-label" for="analyticsCookies">Дозволити</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cookie-category mb-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6>Маркетингові cookies</h6>
+                                <small class="text-muted">Використовуються для показу релевантної реклами та відстеження ефективності кампаній.</small>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="marketingCookies">
+                                <label class="form-check-label" for="marketingCookies">Дозволити</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+                    <button type="button" class="btn btn-accent" id="saveCookieSettings">Зберегти налаштування</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/cookie-consent.js"></script>
 </body>
 </html>
