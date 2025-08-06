@@ -320,7 +320,8 @@ function user(): array {
                                         </div>
                                         <div class="card card-accent service-cta flex-grow-1">
                                             <div class="icon-circle">
-                                                <i class="fa-solid fa-arrow-right"></i>
+                                                  <i class="fa-solid fa-arrow-right" type="button" data-bs-toggle="modal" data-bs-target="#gameListModal"></i>
+                                                
                                             </div>
                                             <h3 class="accent-color-3">Не знаєш, що вибрати? Ми допоможемо!</h3>
                                             <p class="accent-color-3">
